@@ -27,9 +27,9 @@ class UpdateInvestmentByIdService implements IService<UpdateInvestmentRequestDTO
       where: { id: data.id, name: data.name },
       data: {
         type: data.type,
-        value_invested: data.valueInvested,
-        date_of_investment: data?.dateOfInvestment
-          ? parseDateIso(data.dateOfInvestment)
+        value_invested: data.value_invested,
+        date_of_investment: data?.date_of_investment
+          ? parseDateIso(data.date_of_investment)
           : undefined,
       },
     });

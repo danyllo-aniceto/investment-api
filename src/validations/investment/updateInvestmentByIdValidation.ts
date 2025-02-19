@@ -11,8 +11,8 @@ export function updateInvestmentByIdValidation() {
         'Tipo de investimento inválido. Tipos válidos: (ACTION, FUND, TITLE)',
       )
       .optional(),
-    valueInvested: Yup.number().min(0, 'O valor investido não pode ser negativo').optional(),
-    dateOfInvestment: Yup.string()
+    value_invested: Yup.number().min(0, 'O valor investido não pode ser negativo').optional(),
+    date_of_investment: Yup.string()
       .matches(
         /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/,
         'A data de investimento deve estar no formato YYYY-MM-DD hh:mm',

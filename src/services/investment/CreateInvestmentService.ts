@@ -24,8 +24,8 @@ class CreateInvestmentService implements IService<CreateInvestmentRequestDTO, In
       data: {
         name: data.name,
         type: data.type,
-        date_of_investment: parseDateIso(data.dateOfInvestment),
-        value_invested: data.valueInvested,
+        date_of_investment: parseDateIso(data.date_of_investment),
+        value_invested: data.value_invested,
       },
     });
 

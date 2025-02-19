@@ -4,8 +4,8 @@ import { BasePagedApi } from '../BasePagedApi';
 interface GetInvestment {
   name: string;
   type: InvestmentType;
-  valueInvested: number;
-  dateOfInvestment: string;
+  value_invested: number;
+  date_of_investment: string;
 }
 
 export interface GetPagedInvestmentResponseDTO extends BasePagedApi<GetInvestment> {}

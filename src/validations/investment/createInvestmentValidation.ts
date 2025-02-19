@@ -10,10 +10,10 @@ export function createInvestmentValidation() {
         'Tipo de investimento inválido. Tipos válidos: (ACTION, FUND, TITLE)',
       )
       .required('O tipo de investimento é obrigatório'),
-    valueInvested: Yup.number()
+    value_invested: Yup.number()
       .min(0, 'O valor investido não pode ser negativo')
       .required('O valor investido é obrigatório'),
-    dateOfInvestment: Yup.string()
+    date_of_investment: Yup.string()
       .matches(
         /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/,
         'A data de investimento deve estar no formato YYYY-MM-DD hh:mm',
