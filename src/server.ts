@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import { router } from './routes';
 import { ApiError } from './validations/exceptions/ApiError';
+import { BaseApi } from './dtos/BaseApi';
 
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -16,7 +18,9 @@ app.use((err: ApiError | any, request: Request, response: Response, next: NextFu
     if (err.message) {
       response.status(err.code).json({
         message: err.message,
-      });
+        data: null,
+        status: false,
+      } satisfies BaseApi<null>);
       return;
     }
     response.status(err.code).end();
@@ -25,7 +29,9 @@ app.use((err: ApiError | any, request: Request, response: Response, next: NextFu
 
   response.status(500).json({
     message: err.message || 'Internal Server Error',
-  });
+    data: null,
+    status: false,
+  } as BaseApi<null>);
   return;
 });
 

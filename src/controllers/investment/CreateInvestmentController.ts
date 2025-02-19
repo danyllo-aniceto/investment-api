@@ -1,15 +1,17 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import {
   CreateInvestmentRequestDTO,
-  createValidation,
+  createInvestmentValidation,
 } from '../../validations/investment/createInvestmentValidation';
 import { CreateInvestmentService } from '../../services/investment/CreateInvestmentService';
+import { validationYup } from '../../validations/validationYup';
+import { IController } from '../../dtos/IController';
 
-class CreateInvestmentController {
+class CreateInvestmentController implements IController {
   async handle(request: Request, response: Response) {
     const data: CreateInvestmentRequestDTO = request.body;
 
-    await createValidation(data);
+    await validationYup({ data, validation: createInvestmentValidation });
 
     const createInvestmentService = new CreateInvestmentService();
     const res = await createInvestmentService.handle(data);

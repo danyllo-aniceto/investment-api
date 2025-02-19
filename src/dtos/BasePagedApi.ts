@@ -1,5 +1,9 @@
 export interface BasePagedApi<T> {
-  limit: number;
-  paged: number;
+  pagination: {
+    totalItems: number;
+    totalPages: number;
+    currentPage: number;
+    limit: number;
+  };
   data: Array<T>;
 }

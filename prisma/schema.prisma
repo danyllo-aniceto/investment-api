@@ -21,7 +21,7 @@ enum InvestmentType {
 
 model Investment {
   id                 Int            @id @default(autoincrement())
-  name               String
+  name               String         @unique
   type               InvestmentType
   value_invested     Float
   date_of_investment DateTime

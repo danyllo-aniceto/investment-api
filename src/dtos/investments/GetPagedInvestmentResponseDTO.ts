@@ -1,11 +1,11 @@
 import { InvestmentType } from '@prisma/client';
 import { BasePagedApi } from '../BasePagedApi';
 
-interface GetInvestement {
+interface GetInvestment {
   name: string;
   type: InvestmentType;
   valueInvested: number;
   dateOfInvestment: string;
 }
 
-export interface GetPagedInvestmentResponseDTO extends BasePagedApi<GetInvestement> {}
+export interface GetPagedInvestmentResponseDTO extends BasePagedApi<GetInvestment> {}
