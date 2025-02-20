@@ -1,22 +1,22 @@
-# ⚡ React + TypeScript + Vite
+# 🚀 Backend Node.js
 
-Este repositório contém um projeto frontend utilizando React com TypeScript e Vite. Siga os passos abaixo para configurar e executar o projeto corretamente.
+Este repositório contém a implementação do backend da aplicação. Siga os passos abaixo para configurar e executar o projeto corretamente.
 
 ## 📌 Requisitos
 
 Antes de iniciar, certifique-se de ter instalado em sua máquina:
 
 - [Node.js](https://nodejs.org/) (versão recomendada: LTS)
-- [Yarn](https://yarnpkg.com/) ou [npm](https://www.npmjs.com/)
-- [PostgreSQL](https://www.postgresql.org/) ou um container Docker com PostgreSQL
-- [Prisma ORM](https://www.prisma.io/) para gerenciar as migrações do banco de dados
+- [Docker](https://www.docker.com/) **ou** [PostgreSQL](https://www.postgresql.org/)
+- [Yarn](https://yarnpkg.com/) (opcional, mas recomendado)
+- [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) para testar a API
 
-## 📥 Instalação
+## 👥 Instalação
 
 1. Clone este repositório:
 
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/danyllo-aniceto/investment-api.git
    cd seu-repositorio
    ```
 
@@ -24,36 +24,57 @@ Antes de iniciar, certifique-se de ter instalado em sua máquina:
    ```sh
    yarn install
    ```
-   ou
-   ```sh
-   npm install
-   ```
 
 ## ⚙️ Configuração
 
-1. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente:
+1. Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente com base no `.env.example`:
+
    ```sh
    cp .env.example .env
    ```
+
    **Exemplo de `.env`**:
+
    ```sh
-   VITE_API_URL=http://localhost:4000
-   DATABASE_URL=postgresql://user:password@localhost:5432/database
+   PORT=4000
+   NODE_ENV=development
+   DATABASE_URL=postgres://BD_USERNAME:BD_PASSWORD@localhost:BD_PORT/BD_DATABASE
+
+   BD_USERNAME=meu_usuario
+   BD_PASSWORD=minha_senha
+   BD_DATABASE=meu_banco
+   BD_PORT=5432
    ```
 
-## 🛠️ Configuração do Banco de Dados
+## 🛄 Banco de Dados
 
-1. Certifique-se de que a instância do banco de dados esteja rodando.
+### Opção 1: Usando Docker
 
-   - Caso esteja utilizando Docker, suba o container com:
-     ```sh
-     docker-compose up -d
-     ```
+Se preferir usar um container Docker para o PostgreSQL, execute:
 
-2. Execute as migrações do Prisma para configurar o banco de dados:
-   ```sh
-   yarn prisma migrate dev
-   ```
+```sh
+docker-compose up -d
+```
+
+Isso iniciará um container PostgreSQL com as configurações definidas no `docker-compose.yml`.
+
+### Opção 2: Usando PostgreSQL instalado localmente
+
+Caso já tenha o PostgreSQL instalado em sua máquina, crie um banco de dados com as credenciais definidas no `.env`.
+
+### Executando as migrations
+
+Após subir o Docker ou configurar o PostgreSQL, execute a migration do banco de dados com o Prisma:
+
+```sh
+yarn prisma migrate dev
+```
+
+Caso utilize npm:
+
+```sh
+npm run prisma migrate dev
+```
 
 ## ▶️ Executando o Projeto
 
@@ -63,30 +84,19 @@ Para iniciar a aplicação em modo de desenvolvimento, execute:
 yarn dev
 ```
 
-ou
+A API estará rodando em `http://localhost:4000` (ou na porta definida no `.env`).
 
-```sh
-npm run dev
-```
+## 📩 Testando a API
 
-A aplicação estará rodando em `http://localhost:5173` (ou na porta definida no `.env`).
+Você pode testar os endpoints da API utilizando:
 
-## 🚀 Build para Produção
+- [Insomnia](https://insomnia.rest/)
+- [Postman](https://www.postman.com/)
 
-Para gerar uma versão otimizada do projeto, execute:
+## 💜 ORM Prisma
 
-```sh
-yarn build
-```
+Este projeto utiliza o ORM [Prisma](https://www.prisma.io/) para interação com o banco de dados. Certifique-se de executar as migrations após configurar o banco de dados.
 
-ou
-
-```sh
-npm run build
-```
-
-Os arquivos gerados estarão na pasta `dist/`.
-
-## 📜 Licença
+## 🐟 Licença
 
 Este projeto está sob a licença MIT. Sinta-se livre para usá-lo e contribuir! 🎉
